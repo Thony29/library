@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  border: 2px solid rgb(121, 121, 126);
+  border-radius: 15px;
+}
+
+h1,
+h2 {
+  padding: 10px;
+}
+div > input {
+  height: 30px;
+  width: 70%;
+  display: block;
+  border: 1px solid #999;
+  background-color: aliceblue;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+
+
+button {
+  margin: 20px 7px;
+  width: 70%;
+  height: 30px;
+  background-color: aliceblue;
+  border: 1px solid #999;
+  border-radius: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+fieldset {
+  width: 250px;
+  box-sizing: border-box;
+  margin-left: 100px;
+  border: 1px solid #999;
+  padding: 10px;
+}
+label>span{
+    margin-left: 30%;
+}
+
+input{
+ padding-left: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+th{
+    padding: 30px;
+    border: 2px solid aliceblue;
+}
+
+caption {
+  padding: 10px;
+}
+
+
+.success, .error{
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+.success{
+    background-color: green;
+}
+
+.error{
+    background-color: red;
+}
+
+tbody>tr{
+  background-color: rgb(237, 241, 246);
+  border: 2px solid rgb(76, 127, 172);
+}
