@@ -7,6 +7,7 @@
 .container {
   border: 2px solid rgb(121, 121, 126);
   border-radius: 15px;
+  padding: 30px;
 }
 
 h1,

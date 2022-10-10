@@ -1,61 +1,61 @@
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
-function userInterface() {}
-//Add book to list
-userInterface.prototype.addBookToList = function (book) {
-  const list = document.getElementById("book-list");
-  //create tr element
-  const row = document.createElement("tr");
-  //insert cols
-  row.innerHTML = `<td>${book.title} </td>
+class userInterface {
+  //Add book to list
+  addBookToList(book) {
+    const list = document.getElementById("book-list");
+    //create tr element
+    const row = document.createElement("tr");
+    //insert cols
+    row.innerHTML = `<td>${book.title} </td>
                    <td>${book.author} </td>
                    <td>${book.pages} </td>
                    <td>${book.read} </td>
                    <td><a href = '#' class='delete'>X<a></td>`;
 
-  list.appendChild(row);
-  list.style.fontWeight = "bold";
-};
-// show Alert
-userInterface.prototype.showAlert = function (message, className) {
-  //create div
-  const div = document.createElement("div");
-  //Add classes
-  div.className = `alert ${className}`;
-  // Add text
-  div.appendChild(document.createTextNode(message));
-  // Get parent
-  const container = document.querySelector(".container");
-  const form = document.querySelector("form");
-  container.insertBefore(div, form);
+    list.appendChild(row);
+    list.style.fontWeight = "bold";
+  }
+  // show Alert
+  showAlert(message, className) {
+    //create div
+    const div = document.createElement("div");
+    //Add classes
+    div.className = `alert ${className}`;
+    // Add text
+    div.appendChild(document.createTextNode(message));
+    // Get parent
+    const container = document.querySelector(".container");
+    const form = document.querySelector("form");
+    container.insertBefore(div, form);
 
-  //set time out after 3 sec
-  setTimeout(function () {
-    document.querySelector('.alert').remove();
-  }, 3000);
-};
+    //set time out after 3 sec
+    setTimeout(function () {
+      document.querySelector(".alert").remove();
+    }, 3000);
+  }
 
-// Delete Book
-userInterface.prototype.deleteBook =function(target){
-  if(target.className === 'delete'){
-  target.parentElement.parentElement.remove();
+  // Delete Book
+  deleteBook(target) {
+    if (target.className === "delete") {
+      target.parentElement.parentElement.remove();
+    }
+  }
+
+  clearFields() {
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("pages").value = "";
+    document.getElementById("read").value = "";
   }
 }
-
-
-
-userInterface.prototype.clearFields = function () {
-  document.getElementById("title").value = "";
-  document.getElementById("author").value = "";
-  document.getElementById("pages").value = "";
-  document.getElementById("read").value = "";
-};
-
 // Eventlistener for add book
 document.getElementById("book-form").addEventListener("submit", function (e) {
   // getting form values
@@ -87,7 +87,7 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
     //Add book to list
     ui.addBookToList(book);
     // show success
-    ui.showAlert('Book Sucessfully Added!', 'success')
+    ui.showAlert("Book Sucessfully Added!", "success");
 
     // clear fields
 
@@ -98,18 +98,16 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   e.preventDefault();
 });
 
-
 // Eventlistener for delete book
 
-document.getElementById('book-list').addEventListener('click', function(e){
+document.getElementById("book-list").addEventListener("click", function (e) {
+  // instantiating userInterface
+  const ui = new userInterface();
 
-// instantiating userInterface
-const ui = new userInterface();
+  //delete book
+  ui.deleteBook(e.target);
 
-//delete book
-ui.deleteBook(e.target)
-
-//show alert after delete
-ui.showAlert('Book Removed', 'success')
+  //show alert after delete
+  ui.showAlert("Book Removed", "success");
   e.preventDefault();
-})
+});
